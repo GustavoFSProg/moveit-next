@@ -41,7 +41,7 @@ export function CountdownProvider({ children }: CountownProviderProps) {
     setIsActive(false)
     setHasFinished(false)
 
-    setTime(0.3 * 60)
+    setTime(25 * 60)
   }
 
   useEffect(() => {
