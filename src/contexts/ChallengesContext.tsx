@@ -32,17 +32,10 @@ interface ChallengeContextData {
 
 export const ChallengesContext = createContext({} as ChallengeContextData)
 
-export function ChallengesProvider({
-  children,
-  ...rest
-}: ChallengesProviderProps) {
+export function ChallengesProvider({ children, ...rest }: ChallengesProviderProps) {
   const [level, setLevel] = useState(rest.level ?? 1)
-  const [currentExpierence, setCurrentExpierence] = useState(
-    rest.currentExpierence ?? 0
-  )
-  const [challengesCompleted, setChallengesCompleted] = useState(
-    rest.challengesCompleated ?? 0
-  )
+  const [currentExpierence, setCurrentExpierence] = useState(rest.currentExpierence ?? 0)
+  const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleated ?? 0)
 
   const [activeChallenge, setActiveChallenge] = useState(null)
 
@@ -77,11 +70,11 @@ export function ChallengesProvider({
 
     new Audio('/notification.mp3').play()
 
-    //   if (Notification.permission === 'granted') {
-    //     new Notification('Novo desafio', {
-    //       body: `Valendo ${challenge.amount} xp!`,
-    //     })
-    //   }
+    if (Notification.permission === 'granted') {
+      new Notification('Novo desafio', {
+        body: `Valendo ${challenge.amount} xp!`,
+      })
+    }
   }
 
   function resetChallenge() {
